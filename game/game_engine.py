@@ -23,8 +23,13 @@ class GameEngine:
         if self.game_won:
             return
             
+        if not self.input_box.text.strip():
+            self.feedback_msg = "Please enter a number!"
+            self.feedback_color = (255, 0, 0)
+            return
+
         guess = int(self.input_box.text)
-        
+
         self.attempts += 1
         self.input_box.clear()
 
@@ -63,7 +68,7 @@ class GameEngine:
     def update(self):
         pass
 
-    def render(self, screen):
+    def render(self, screen):of game engine.py
         screen.fill((30, 34, 42))
 
         title_surf = self.font_title.render("Number Guessing Arena", True, (245, 245, 245))
