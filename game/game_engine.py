@@ -23,10 +23,15 @@ class GameEngine:
         if self.game_won:
             return
             
-        guess = int(self.input_box.text)
-        
-        self.attempts += 1
-        self.input_box.clear()
+    if not self.input_box.text.strip():
+        self.feedback_msg = "Please enter a number!"
+        self.feedback_color = (255, 0, 0)
+        return
+
+    guess = int(self.input_box.text)
+
+    self.attempts += 1
+    self.input_box.clear()
 
         if guess < self.secret_number:
             self.feedback_msg = f"TOO LOW! (Guess was {guess})"
